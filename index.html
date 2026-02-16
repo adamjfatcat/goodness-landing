@@ -1694,7 +1694,7 @@
 
       <div class="navbar__actions">
         <a href="#" class="navbar__login">Login</a>
-        <button class="btn btn--primary btn--small demo-trigger">Request Demo</button>
+        <button class="btn btn--primary btn--small demo-trigger">Join the Waitlist</button>
       </div>
 
       <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation">
@@ -1715,7 +1715,7 @@
         <a href="#" class="navbar__mobile-link">Login</a>
       </div>
       <div class="navbar__mobile-actions">
-        <button class="btn btn--primary demo-trigger" style="width:100%">Request Demo</button>
+        <button class="btn btn--primary demo-trigger" style="width:100%">Join the Waitlist</button>
       </div>
     </div>
   </nav>
@@ -1744,7 +1744,7 @@
 
         <div class="hero__actions">
           <button class="btn btn--primary btn--large demo-trigger">
-            Request Demo
+            Join the Waitlist
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </button>
           <a href="#how-it-works" class="btn btn--secondary btn--large">See How It Works</a>
@@ -2131,13 +2131,13 @@
       <div class="cta__card reveal">
         <span class="section-label">Get Started</span>
         <h2 class="cta__heading">Run your nonprofit with clarity and confidence.</h2>
-        <p class="cta__text">Join the next generation of nonprofit operators using Goodness to grow their impact, not their stress.</p>
+        <p class="cta__text">Join the waitlist and be among the first nonprofit teams to experience Goodness.</p>
         <div class="cta__actions">
           <button class="btn btn--primary btn--large demo-trigger">
-            Request Demo
+            Join the Waitlist
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
           </button>
-          <button class="btn btn--secondary btn--large demo-trigger">Join Early Access</button>
+          <button class="btn btn--secondary btn--large demo-trigger">Get Early Access</button>
         </div>
       </div>
     </div>
@@ -2161,8 +2161,8 @@
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><path d="m9 12 2 2 4-4"/></svg>
             Early Access Open
           </div>
-          <h3 class="modal__title" id="modalTitle">Request a Demo</h3>
-          <p class="modal__subtitle">See how Goodness can bring clarity and calm to your nonprofit operations.</p>
+          <h3 class="modal__title" id="modalTitle">Join the Waitlist</h3>
+          <p class="modal__subtitle">Be among the first nonprofits to experience Goodness. We'll reach out when it's your turn.</p>
         </div>
 
         <div class="modal__body">
@@ -2226,10 +2226,10 @@
             </div>
 
             <button type="submit" class="btn btn--primary modal__submit" id="submitBtn">
-              <span id="submitText">Request Demo</span>
+              <span id="submitText">Join the Waitlist</span>
             </button>
 
-            <p class="modal__footer-note">No credit card required. We'll reach out within 1 business day.</p>
+            <p class="modal__footer-note">No credit card required. We'll notify you when your spot is ready.</p>
           </form>
         </div>
       </div>
@@ -2239,8 +2239,8 @@
         <div class="modal__success-icon">
           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
         </div>
-        <h3 class="modal__success-title">You're on the list!</h3>
-        <p class="modal__success-text">Thanks for your interest in Goodness. We'll be in touch within 1 business day to schedule your demo.</p>
+        <h3 class="modal__success-title">You're on the waitlist!</h3>
+        <p class="modal__success-text">Thanks for your interest in Goodness. We'll reach out as soon as your spot is ready.</p>
         <button class="btn btn--secondary" id="successClose">Close</button>
       </div>
     </div>
@@ -2442,7 +2442,7 @@
       modalFormView.style.display = '';
       modalSuccessView.classList.remove('active');
       submitBtn.disabled = false;
-      submitText.textContent = 'Request Demo';
+      submitText.textContent = 'Join the Waitlist';
       // Clear all error states
       demoForm.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
       demoForm.querySelectorAll('.form-error').forEach(el => el.classList.remove('visible'));
@@ -2504,7 +2504,7 @@
     });
 
     // Form submission
-    demoForm.addEventListener('submit', (e) => {
+    demoForm.addEventListener('submit', async (e) => {
       e.preventDefault();
 
       // Validate all required fields
@@ -2529,23 +2529,29 @@
         orgName: document.getElementById('orgName').value.trim(),
         orgSize: document.getElementById('orgSize').value,
         role: document.getElementById('role').value,
-        message: document.getElementById('message').value.trim(),
-        submittedAt: new Date().toISOString()
+        message: document.getElementById('message').value.trim()
       };
 
-      // Store in localStorage (in production, send to API)
-      const submissions = JSON.parse(localStorage.getItem('goodness_demos') || '[]');
-      submissions.push(formData);
-      localStorage.setItem('goodness_demos', JSON.stringify(submissions));
+      // Send to serverless function (which securely forwards to Airtable)
+      try {
+        const response = await fetch('/.netlify/functions/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(formData)
+        });
 
-      // Log to console for dev visibility
-      console.log('Demo request submitted:', formData);
+        if (!response.ok) {
+          throw new Error('Submission failed');
+        }
 
-      // Simulate brief network delay, then show success
-      setTimeout(() => {
         modalFormView.style.display = 'none';
         modalSuccessView.classList.add('active');
-      }, 800);
+      } catch (err) {
+        console.error('Submission error:', err);
+        submitBtn.disabled = false;
+        submitText.textContent = 'Join the Waitlist';
+        alert('Something went wrong. Please try again.');
+      }
     });
   </script>
 
