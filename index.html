@@ -1492,6 +1492,238 @@
     }
 
     /* ========================================
+       PRICING
+       ======================================== */
+    .pricing {
+      padding: var(--section-padding) 0;
+      background: var(--white);
+    }
+
+    .pricing__header {
+      text-align: center;
+      margin-bottom: 16px;
+    }
+
+    .pricing__toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 56px;
+    }
+
+    .pricing__toggle-label {
+      font-size: 0.9375rem;
+      font-weight: 500;
+      color: var(--text-muted);
+      transition: color var(--transition-fast);
+    }
+
+    .pricing__toggle-label.active {
+      color: var(--text-primary);
+    }
+
+    .pricing__toggle-switch {
+      width: 52px;
+      height: 28px;
+      background: var(--gray-200);
+      border-radius: 14px;
+      position: relative;
+      cursor: pointer;
+      transition: background var(--transition-fast);
+    }
+
+    .pricing__toggle-switch.active {
+      background: var(--gradient-cta);
+    }
+
+    .pricing__toggle-switch::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 22px;
+      height: 22px;
+      background: var(--white);
+      border-radius: 50%;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.15);
+      transition: transform var(--transition-fast);
+    }
+
+    .pricing__toggle-switch.active::after {
+      transform: translateX(24px);
+    }
+
+    .pricing__save-badge {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--green);
+      background: var(--green-light);
+      padding: 4px 10px;
+      border-radius: var(--radius-full);
+    }
+
+    .pricing__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .pricing__card {
+      background: var(--white);
+      border: 1.5px solid var(--gray-200);
+      border-radius: var(--radius-xl);
+      padding: 36px 28px;
+      position: relative;
+      transition: all var(--transition-base);
+    }
+
+    .pricing__card:hover {
+      box-shadow: var(--shadow-lg);
+      border-color: transparent;
+    }
+
+    .pricing__card--featured {
+      border-color: var(--sky);
+      box-shadow: var(--shadow-lg);
+      transform: scale(1.03);
+    }
+
+    .pricing__card--featured:hover {
+      transform: scale(1.05);
+    }
+
+    .pricing__card-popular {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--gradient-cta);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.75rem;
+      font-weight: 700;
+      padding: 5px 16px;
+      border-radius: var(--radius-full);
+      white-space: nowrap;
+    }
+
+    .pricing__card-name {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+
+    .pricing__card-desc {
+      font-size: 0.8125rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+      margin-bottom: 24px;
+      min-height: 40px;
+    }
+
+    .pricing__card-price {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      margin-bottom: 4px;
+    }
+
+    .pricing__card-currency {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .pricing__card-amount {
+      font-family: var(--font-display);
+      font-size: 3rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: var(--text-primary);
+      line-height: 1;
+    }
+
+    .pricing__card-period {
+      font-size: 0.9375rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+
+    .pricing__card-contacts {
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .pricing__card-features {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 28px;
+    }
+
+    .pricing__feature {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.875rem;
+      color: var(--text-secondary);
+      line-height: 1.4;
+    }
+
+    .pricing__feature svg {
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .pricing__card .btn {
+      width: 100%;
+    }
+
+    .pricing__footnote {
+      text-align: center;
+      margin-top: 40px;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .pricing__footnote a {
+      color: var(--sky);
+      font-weight: 500;
+    }
+
+    .pricing__footnote a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 1024px) {
+      .pricing__grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .pricing__card--featured {
+        transform: scale(1);
+      }
+      .pricing__card--featured:hover {
+        transform: scale(1.02);
+      }
+    }
+
+    @media (max-width: 640px) {
+      .pricing__grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+        margin: 0 auto;
+      }
+    }
+
+    /* ========================================
        SCROLL ANIMATIONS
        ======================================== */
     .reveal {
@@ -1691,7 +1923,7 @@
         <li><a href="#platform" class="navbar__link">Product</a></li>
         <li><a href="#how-it-works" class="navbar__link">How It Works</a></li>
         <li><a href="#impact" class="navbar__link">Impact</a></li>
-        <li><a href="#" class="navbar__link">Pricing</a></li>
+        <li><a href="#pricing" class="navbar__link">Pricing</a></li>
         <li><a href="#" class="navbar__link">About</a></li>
       </ul>
 
@@ -1713,7 +1945,7 @@
         <a href="#platform" class="navbar__mobile-link">Product</a>
         <a href="#how-it-works" class="navbar__mobile-link">How It Works</a>
         <a href="#impact" class="navbar__mobile-link">Impact</a>
-        <a href="#" class="navbar__mobile-link">Pricing</a>
+        <a href="#pricing" class="navbar__mobile-link">Pricing</a>
         <a href="#" class="navbar__mobile-link">About</a>
         <a href="#" class="navbar__mobile-link">Login</a>
       </div>
@@ -1742,7 +1974,7 @@
         </h1>
 
         <p class="hero__subtitle">
-          Goodness is the AI operating system for nonprofits — bringing fundraising, operations, donors, events, and impact into one calm, intelligent platform.
+          Goodness is the AI-powered operating system for nonprofits — unifying your donors, pledges, events, vendors, communications, and reporting in one intelligent platform.
         </p>
 
         <div class="hero__actions">
@@ -1760,8 +1992,8 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#5BAFEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </span>
           <div>
-            <div style="font-weight:600; font-size:0.8125rem; color:var(--text-primary)">New Donors</div>
-            <div style="font-size:0.75rem; color:var(--green)">+24 this week</div>
+            <div style="font-weight:600; font-size:0.8125rem; color:var(--text-primary)">Donor Highlight</div>
+            <div style="font-size:0.75rem; color:var(--green)">3 donors increased giving</div>
           </div>
         </div>
 
@@ -1770,8 +2002,8 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#F0856E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </span>
           <div>
-            <div style="font-weight:600; font-size:0.8125rem; color:var(--text-primary)">Campaign Goal</div>
-            <div style="font-size:0.75rem; color:var(--green)">87% reached</div>
+            <div style="font-weight:600; font-size:0.8125rem; color:var(--text-primary)">Pledge Alert</div>
+            <div style="font-size:0.75rem; color:var(--green)">5 pledges fulfilled today</div>
           </div>
         </div>
 
@@ -1784,19 +2016,19 @@
           </div>
           <div class="hero__dashboard-body">
             <div class="hero__metric">
-              <div class="hero__metric-label">Total Donors</div>
-              <div class="hero__metric-value">2,847</div>
-              <div class="hero__metric-change">+12.5% this month</div>
+              <div class="hero__metric-label">Donor Retention</div>
+              <div class="hero__metric-value">74.2%</div>
+              <div class="hero__metric-change">+8.3% year over year</div>
             </div>
             <div class="hero__metric">
-              <div class="hero__metric-label">Funds Raised</div>
-              <div class="hero__metric-value">$184K</div>
-              <div class="hero__metric-change">+23.1% this quarter</div>
+              <div class="hero__metric-label">Pledge Fulfillment</div>
+              <div class="hero__metric-value">87%</div>
+              <div class="hero__metric-change">153 active pledges</div>
             </div>
             <div class="hero__metric">
-              <div class="hero__metric-label">Active Campaigns</div>
-              <div class="hero__metric-value">12</div>
-              <div class="hero__metric-change">3 closing soon</div>
+              <div class="hero__metric-label">Event Revenue</div>
+              <div class="hero__metric-value">$9.8K</div>
+              <div class="hero__metric-change">43 donations this event</div>
             </div>
             <div class="hero__dashboard-chart" id="heroChart">
               <div class="hero__chart-bar" style="height: 35%"></div>
@@ -1831,31 +2063,31 @@
               <span class="problem__item-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
               </span>
-              <span class="problem__item-text">Disconnected donor systems that don't talk to each other</span>
+              <span class="problem__item-text">Donors, prospects, and pledges scattered across spreadsheets and disconnected tools</span>
             </div>
             <div class="problem__item">
               <span class="problem__item-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
               </span>
-              <span class="problem__item-text">Manual fundraising workflows that drain team energy</span>
+              <span class="problem__item-text">Events, vendors, and in-kind donations managed with manual processes and email chains</span>
             </div>
             <div class="problem__item">
               <span class="problem__item-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
               </span>
-              <span class="problem__item-text">Event chaos with no central coordination</span>
+              <span class="problem__item-text">No way to track pledge fulfillment, aging, or at-risk payments</span>
             </div>
             <div class="problem__item">
               <span class="problem__item-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
               </span>
-              <span class="problem__item-text">No clear view of real impact across programs</span>
+              <span class="problem__item-text">Letters, acknowledgments, and donor communications done one at a time</span>
             </div>
             <div class="problem__item">
               <span class="problem__item-icon">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
               </span>
-              <span class="problem__item-text">Too much time on operations, not enough on mission</span>
+              <span class="problem__item-text">Reporting requires hours of manual work instead of just asking a question</span>
             </div>
           </div>
         </div>
@@ -1865,9 +2097,9 @@
             <div class="problem__solution-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
             </div>
-            <h3 class="problem__solution-heading">Goodness brings everything into one intelligent system.</h3>
+            <h3 class="problem__solution-heading">Goodness connects everything into one intelligent system.</h3>
             <p class="problem__solution-text">
-              Designed for how nonprofits actually operate — not how software companies think they should. One platform for donors, fundraising, events, impact tracking, and the AI workflows that connect them all.
+              Donors link to pledges. Pledges link to events. Events link to vendors and forms. Communications flow automatically. And when you need a report, you just ask in plain English. Everything is connected because that's how your nonprofit actually runs.
             </p>
           </div>
         </div>
@@ -1884,7 +2116,7 @@
       <div class="platform__header reveal">
         <span class="section-label">Platform</span>
         <h2 class="section-heading mx-auto" style="text-align:center;">One operating system for everything that drives your mission.</h2>
-        <p class="section-subheading mx-auto" style="text-align:center;">Six integrated modules. One calm, intelligent experience.</p>
+        <p class="section-subheading mx-auto" style="text-align:center;">Six integrated modules that talk to each other. One unified view of your nonprofit.</p>
       </div>
 
       <div class="platform__grid">
@@ -1892,48 +2124,48 @@
           <div class="platform__card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5BAFEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <h3 class="platform__card-title">Donor CRM</h3>
-          <p class="platform__card-desc">Every relationship in one place. Know your donors, track interactions, and nurture connections that grow giving over time.</p>
+          <h3 class="platform__card-title">Donor & Prospect CRM</h3>
+          <p class="platform__card-desc">Full donor profiles with engagement scoring, activity timelines, tags, and segments. Track prospects separately and convert them as they give. Acknowledge donations with one click.</p>
         </div>
 
         <div class="platform__card reveal reveal--delay-2">
           <div class="platform__card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F0856E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
           </div>
-          <h3 class="platform__card-title">Fundraising & Campaigns</h3>
-          <p class="platform__card-desc">Launch, manage, and optimize campaigns with AI-assisted targeting, messaging, and donor engagement tools.</p>
+          <h3 class="platform__card-title">Pledges & Donations</h3>
+          <p class="platform__card-desc">Manage pledges with payment tracking, fulfillment rates, aging reports, and at-risk alerts. Accept donations via Stripe. See everything linked to donors and events.</p>
         </div>
 
         <div class="platform__card reveal reveal--delay-3">
           <div class="platform__card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
           </div>
-          <h3 class="platform__card-title">Events & Ticketing</h3>
-          <p class="platform__card-desc">Plan events, sell tickets, manage RSVPs, and track attendance — all connected to your donor and campaign data.</p>
+          <h3 class="platform__card-title">Events & Vendors</h3>
+          <p class="platform__card-desc">Run galas, tournaments, and fundraisers with seat maps, attendees, vendor management, in-kind tracking, landing pages, and auto-generated acknowledgment letters.</p>
         </div>
 
         <div class="platform__card reveal reveal--delay-1">
           <div class="platform__card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#F0856E" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
           </div>
-          <h3 class="platform__card-title">Automation & AI Workflows</h3>
-          <p class="platform__card-desc">Let Goodness handle the routine. Automated follow-ups, smart segmentation, and AI that learns how your org operates.</p>
+          <h3 class="platform__card-title">Forms & Automation</h3>
+          <p class="platform__card-desc">Build branded forms with AI or from scratch. Trigger automations on submission — create tasks, records, send notifications, or call webhooks. Donation, vendor, and prospect forms built in.</p>
         </div>
 
         <div class="platform__card reveal reveal--delay-2">
           <div class="platform__card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5BAFEF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
           </div>
-          <h3 class="platform__card-title">Reporting & Impact</h3>
-          <p class="platform__card-desc">See your full story. Dashboards that show what's working, where you're growing, and the real impact you're making.</p>
+          <h3 class="platform__card-title">AI Reporting</h3>
+          <p class="platform__card-desc">Ask questions in plain English and get instant reports. Donor retention, pledge analytics, year-over-year breakdowns, campaign attribution — plus AI-generated insights and summaries you can export.</p>
         </div>
 
         <div class="platform__card reveal reveal--delay-3">
           <div class="platform__card-icon">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
-          <h3 class="platform__card-title">Community & Engagement</h3>
-          <p class="platform__card-desc">Build lasting relationships with supporters, volunteers, and advocates through personalized communication at scale.</p>
+          <h3 class="platform__card-title">Communications</h3>
+          <p class="platform__card-desc">Send emails, SMS via Twilio, and physical letters with merge fields and signatures. Auto-generate PDFs, mailing labels, and in-kind acknowledgment letters. All communications tracked in one hub.</p>
         </div>
       </div>
     </div>
@@ -1954,18 +2186,18 @@
       <div class="how-it-works__steps">
         <div class="how-it-works__step reveal reveal--delay-1">
           <div class="how-it-works__step-number">1</div>
-          <h3 class="how-it-works__step-title">Connect your organization</h3>
-          <p class="how-it-works__step-desc">Link your existing tools, import your data, and let Goodness understand how your nonprofit operates today.</p>
+          <h3 class="how-it-works__step-title">Import & configure</h3>
+          <p class="how-it-works__step-desc">Import donors from spreadsheets or existing platforms. Set your org branding, donor thresholds, custom fields, campaigns, and tags — Goodness adapts to your workflows.</p>
         </div>
         <div class="how-it-works__step reveal reveal--delay-2">
           <div class="how-it-works__step-number">2</div>
-          <h3 class="how-it-works__step-title">Goodness organizes your ops</h3>
-          <p class="how-it-works__step-desc">Your donors, campaigns, events, and workflows come together into one clear, connected view of your organization.</p>
+          <h3 class="how-it-works__step-title">Everything connects</h3>
+          <p class="how-it-works__step-desc">Donors link to pledges. Events link to vendors and forms. Communications flow automatically. Duplicate records get merged. One unified picture of your nonprofit.</p>
         </div>
         <div class="how-it-works__step reveal reveal--delay-3">
           <div class="how-it-works__step-number">3</div>
-          <h3 class="how-it-works__step-title">AI helps you grow impact</h3>
-          <p class="how-it-works__step-desc">Smart recommendations, automated workflows, and intelligent insights help you raise more, engage better, and scale your mission.</p>
+          <h3 class="how-it-works__step-title">Ask, act, grow</h3>
+          <p class="how-it-works__step-desc">Use natural language to generate reports. Get AI insights on donor retention and pledge health. Automate acknowledgments, letters, and follow-ups so your team focuses on mission.</p>
         </div>
       </div>
     </div>
@@ -1989,8 +2221,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <div>
-            <h4 class="why-different__item-title">Designed for real nonprofit workflows</h4>
-            <p class="why-different__item-desc">Not a generic CRM. Built from the ground up for how nonprofits actually work.</p>
+            <h4 class="why-different__item-title">Built for how nonprofits actually operate</h4>
+            <p class="why-different__item-desc">Pledges, in-kind donations, vendor coordination, mailing labels — the real stuff other platforms ignore.</p>
           </div>
         </div>
 
@@ -1999,8 +2231,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <div>
-            <h4 class="why-different__item-title">Human-centered, not corporate</h4>
-            <p class="why-different__item-desc">Warm, clear, and approachable — because nonprofit teams deserve tools that feel good to use.</p>
+            <h4 class="why-different__item-title">Natural language reporting</h4>
+            <p class="why-different__item-desc">Stop building reports manually. Just ask "show me all donations over $100 this month" and Goodness generates it instantly.</p>
           </div>
         </div>
 
@@ -2009,8 +2241,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <div>
-            <h4 class="why-different__item-title">AI that actually reduces work</h4>
-            <p class="why-different__item-desc">Not AI for the sake of AI. Automation that gives hours back to your team every single week.</p>
+            <h4 class="why-different__item-title">Everything linked together</h4>
+            <p class="why-different__item-desc">Donors, prospects, pledges, events, vendors, and forms — all connected. Update one thing and it flows everywhere.</p>
           </div>
         </div>
 
@@ -2019,8 +2251,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <div>
-            <h4 class="why-different__item-title">Calm, clear, simple system</h4>
-            <p class="why-different__item-desc">Complexity hidden, clarity surfaced. Your team sees what matters, when it matters.</p>
+            <h4 class="why-different__item-title">Flexible for every org</h4>
+            <p class="why-different__item-desc">Custom fields, donor tags, fund names, thresholds, vendor categories — configure Goodness to match how your nonprofit works, not the other way around.</p>
           </div>
         </div>
 
@@ -2029,8 +2261,8 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <div>
-            <h4 class="why-different__item-title">Focus on mission, not tools</h4>
-            <p class="why-different__item-desc">Goodness gets out of the way so your team can focus on the work that actually changes lives.</p>
+            <h4 class="why-different__item-title">Automations that save real hours</h4>
+            <p class="why-different__item-desc">Auto-generate in-kind letters, trigger tasks on form submissions, send acknowledgments from donor profiles, and forward emails directly into your CRM.</p>
           </div>
         </div>
       </div>
@@ -2084,7 +2316,7 @@
           <div class="testimonial__stars">
             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
           </div>
-          <p class="testimonial__quote">"Goodness gave our team clarity and calm for the first time. We can finally see everything in one place and actually focus on our mission."</p>
+          <p class="testimonial__quote">"We used to track pledges in spreadsheets and pray nothing fell through the cracks. Now Goodness shows us exactly which pledges are at risk and who needs follow-up."</p>
           <div class="testimonial__author">
             <div class="testimonial__avatar">SR</div>
             <div>
@@ -2098,7 +2330,7 @@
           <div class="testimonial__stars">
             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
           </div>
-          <p class="testimonial__quote">"Fundraising feels organized instead of overwhelming. The AI recommendations have helped us identify donors we were missing entirely."</p>
+          <p class="testimonial__quote">"I asked Goodness to show me all gala attendees who aren't yet donors — it pulled the report in seconds. That used to take us a full day of cross-referencing."</p>
           <div class="testimonial__author">
             <div class="testimonial__avatar">MJ</div>
             <div>
@@ -2112,7 +2344,7 @@
           <div class="testimonial__stars">
             <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
           </div>
-          <p class="testimonial__quote">"We finally see our full impact in one place. Reporting used to take weeks — now our board gets real-time dashboards they actually understand."</p>
+          <p class="testimonial__quote">"Events, vendors, in-kind letters, donor acknowledgments — it all just flows together now. Our gala went from chaos to completely under control."</p>
           <div class="testimonial__author">
             <div class="testimonial__avatar">AL</div>
             <div>
@@ -2122,6 +2354,174 @@
           </div>
         </div>
       </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       PRICING
+       ======================================== -->
+  <section class="pricing" id="pricing">
+    <div class="container">
+      <div class="pricing__header reveal">
+        <span class="section-label">Pricing</span>
+        <h2 class="section-heading mx-auto" style="text-align:center;">Simple, honest pricing that grows with your mission.</h2>
+        <p class="section-subheading mx-auto" style="text-align:center;">Everything you need in one platform. No hidden fees. No per-user charges.</p>
+      </div>
+
+      <div class="pricing__toggle reveal">
+        <span class="pricing__toggle-label active" id="monthlyLabel">Monthly</span>
+        <button class="pricing__toggle-switch" id="billingToggle" aria-label="Toggle annual billing"></button>
+        <span class="pricing__toggle-label" id="annualLabel">Annual</span>
+        <span class="pricing__save-badge">Save 20%</span>
+      </div>
+
+      <div class="pricing__grid">
+        <!-- Starter -->
+        <div class="pricing__card reveal reveal--delay-1">
+          <div class="pricing__card-name">Starter</div>
+          <div class="pricing__card-desc">For new nonprofits just getting started.</div>
+          <div class="pricing__card-price">
+            <span class="pricing__card-currency">$</span>
+            <span class="pricing__card-amount" data-monthly="0" data-annual="0">0</span>
+          </div>
+          <div class="pricing__card-period"><span class="period-text">Free forever</span></div>
+          <div class="pricing__card-contacts">Up to 250 contacts</div>
+          <div class="pricing__card-features">
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Donor CRM
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Donation forms
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Basic reporting
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Email support
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Unlimited users
+            </div>
+          </div>
+          <button class="btn btn--secondary demo-trigger">Get Started Free</button>
+        </div>
+
+        <!-- Grow -->
+        <div class="pricing__card reveal reveal--delay-2">
+          <div class="pricing__card-name">Grow</div>
+          <div class="pricing__card-desc">For small teams building their donor base.</div>
+          <div class="pricing__card-price">
+            <span class="pricing__card-currency">$</span>
+            <span class="pricing__card-amount" data-monthly="79" data-annual="63">79</span>
+          </div>
+          <div class="pricing__card-period"><span class="period-text">per month</span></div>
+          <div class="pricing__card-contacts">Up to 2,500 contacts</div>
+          <div class="pricing__card-features">
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Everything in Starter
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Fundraising campaigns
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Events & ticketing
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              AI donor insights
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Email campaigns
+            </div>
+          </div>
+          <button class="btn btn--secondary demo-trigger">Join the Waitlist</button>
+        </div>
+
+        <!-- Scale (Featured) -->
+        <div class="pricing__card pricing__card--featured reveal reveal--delay-3">
+          <div class="pricing__card-popular">Most Popular</div>
+          <div class="pricing__card-name">Scale</div>
+          <div class="pricing__card-desc">For growing orgs with active programs.</div>
+          <div class="pricing__card-price">
+            <span class="pricing__card-currency">$</span>
+            <span class="pricing__card-amount" data-monthly="179" data-annual="143">179</span>
+          </div>
+          <div class="pricing__card-period"><span class="period-text">per month</span></div>
+          <div class="pricing__card-contacts">Up to 10,000 contacts</div>
+          <div class="pricing__card-features">
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Everything in Grow
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              AI automation workflows
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Impact reporting dashboards
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Community & engagement tools
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Priority support
+            </div>
+          </div>
+          <button class="btn btn--primary demo-trigger">Join the Waitlist</button>
+        </div>
+
+        <!-- Enterprise -->
+        <div class="pricing__card reveal reveal--delay-4">
+          <div class="pricing__card-name">Enterprise</div>
+          <div class="pricing__card-desc">For large nonprofits with complex needs.</div>
+          <div class="pricing__card-price">
+            <span class="pricing__card-amount" data-monthly="Custom" data-annual="Custom" style="font-size:2.25rem;">Custom</span>
+          </div>
+          <div class="pricing__card-period"><span class="period-text">tailored to you</span></div>
+          <div class="pricing__card-contacts">Unlimited contacts</div>
+          <div class="pricing__card-features">
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Everything in Scale
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Custom integrations
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Dedicated account manager
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Advanced security & SSO
+            </div>
+            <div class="pricing__feature">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#5BBD8C" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              SLA & onboarding support
+            </div>
+          </div>
+          <button class="btn btn--secondary demo-trigger">Contact Us</button>
+        </div>
+      </div>
+
+      <p class="pricing__footnote reveal">
+        All paid plans include standard processing fees (2.9% + $0.30 per transaction).<br>
+        Every plan includes unlimited users — no per-seat charges, ever.
+      </p>
     </div>
   </section>
 
@@ -2555,6 +2955,40 @@
         submitText.textContent = 'Join the Waitlist';
         alert('Something went wrong. Please try again.');
       }
+    });
+
+    // ========================================
+    // PRICING TOGGLE
+    // ========================================
+    const billingToggle = document.getElementById('billingToggle');
+    const monthlyLabel = document.getElementById('monthlyLabel');
+    const annualLabel = document.getElementById('annualLabel');
+    let isAnnual = false;
+
+    billingToggle.addEventListener('click', () => {
+      isAnnual = !isAnnual;
+      billingToggle.classList.toggle('active', isAnnual);
+      monthlyLabel.classList.toggle('active', !isAnnual);
+      annualLabel.classList.toggle('active', isAnnual);
+
+      document.querySelectorAll('.pricing__card-amount').forEach(el => {
+        const monthly = el.dataset.monthly;
+        const annual = el.dataset.annual;
+        if (monthly === 'Custom') return;
+        el.textContent = isAnnual ? annual : monthly;
+      });
+
+      document.querySelectorAll('.period-text').forEach(el => {
+        const card = el.closest('.pricing__card');
+        const amount = card.querySelector('.pricing__card-amount');
+        if (amount.dataset.monthly === '0') {
+          el.textContent = 'Free forever';
+        } else if (amount.dataset.monthly === 'Custom') {
+          el.textContent = 'tailored to you';
+        } else {
+          el.textContent = isAnnual ? 'per month, billed annually' : 'per month';
+        }
+      });
     });
   </script>
 
