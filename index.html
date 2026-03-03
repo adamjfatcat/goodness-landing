@@ -3,8 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Goodness — The AI operating system for nonprofits. Run, grow, and scale your impact with one calm, intelligent platform.">
-  <title>Goodness — AI Operating System for Nonprofits</title>
+  <meta name="description" content="Goodness is the nonprofit software that replaces your disconnected tools. AI-powered nonprofit CRM, fundraising, events, and reporting in one platform.">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://trygoodness.ai/">
+  <title>Goodness — Nonprofit Software & AI-Powered CRM for Nonprofits</title>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
@@ -1735,6 +1737,81 @@
     }
 
     /* ========================================
+       FAQ
+       ======================================== */
+    .faq {
+      padding: var(--section-padding) 0;
+      background: var(--warm-white);
+    }
+
+    .faq__header {
+      text-align: center;
+      margin-bottom: 56px;
+    }
+
+    .faq__list {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .faq__item {
+      background: var(--white);
+      border: 1px solid var(--gray-100);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: all var(--transition-base);
+    }
+
+    .faq__item:hover {
+      box-shadow: var(--shadow-sm);
+    }
+
+    .faq__question {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 22px 28px;
+      font-family: var(--font-display);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      text-align: left;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .faq__icon {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      color: var(--sunrise);
+      transition: transform var(--transition-fast);
+    }
+
+    .faq__item.active .faq__icon {
+      transform: rotate(45deg);
+    }
+
+    .faq__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease-out);
+    }
+
+    .faq__answer-inner {
+      padding: 0 28px 24px;
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ========================================
        SCROLL ANIMATIONS
        ======================================== */
     .reveal {
@@ -1920,7 +1997,7 @@
   <nav class="navbar" id="navbar">
     <div class="navbar__inner">
       <a href="#" class="navbar__logo">
-        <svg class="navbar__logo-icon" viewBox="0 0 200 200" width="36" height="36">
+        <svg class="navbar__logo-icon" viewBox="0 0 200 200" width="36" height="36" role="img" aria-label="Goodness logo">
           <ellipse cx="100" cy="62" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="6" transform="rotate(-12, 100, 62)" stroke-linecap="round"/>
           <ellipse cx="100" cy="64" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="4" opacity="0.12" transform="rotate(-12, 100, 64)"/>
           <text x="100" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="115" font-weight="700" fill="#0C2D48">g</text>
@@ -1933,7 +2010,7 @@
         <li><a href="#how-it-works" class="navbar__link">How It Works</a></li>
         <li><a href="#impact" class="navbar__link">Impact</a></li>
         <li><a href="#pricing" class="navbar__link">Pricing</a></li>
-        <li><a href="#" class="navbar__link">About</a></li>
+        <li><a href="#faq" class="navbar__link">FAQ</a></li>
       </ul>
 
       <div class="navbar__actions">
@@ -1955,7 +2032,7 @@
         <a href="#how-it-works" class="navbar__mobile-link">How It Works</a>
         <a href="#impact" class="navbar__mobile-link">Impact</a>
         <a href="#pricing" class="navbar__mobile-link">Pricing</a>
-        <a href="#" class="navbar__mobile-link">About</a>
+        <a href="#faq" class="navbar__mobile-link">FAQ</a>
         <a href="#" class="navbar__mobile-link">Login</a>
       </div>
       <div class="navbar__mobile-actions">
@@ -1965,6 +2042,7 @@
   </nav>
 
 
+  <main>
   <!-- ========================================
        HERO
        ======================================== -->
@@ -1983,7 +2061,7 @@
         </h1>
 
         <p class="hero__subtitle">
-          Goodness is the AI-powered operating system for nonprofits — unifying your donors, pledges, events, vendors, communications, and reporting in one intelligent platform.
+          Goodness is the nonprofit software that replaces your disconnected tools with one AI-powered platform — unifying donors, pledges, events, vendors, communications, and reporting.
         </p>
 
         <div class="hero__actions">
@@ -2066,7 +2144,7 @@
       <div class="problem__grid">
         <div class="reveal">
           <span class="section-label">The Problem</span>
-          <h2 class="section-heading">Nonprofits are forced to run on fragmented tools and manual work.</h2>
+          <h2 class="section-heading">Nonprofits are forced to run on fragmented fundraising software and manual work.</h2>
           <div class="problem__list" style="margin-top:32px;">
             <div class="problem__item">
               <span class="problem__item-icon">
@@ -2124,8 +2202,8 @@
     <div class="container">
       <div class="platform__header reveal">
         <span class="section-label">Platform</span>
-        <h2 class="section-heading mx-auto" style="text-align:center;">One operating system for everything that drives your mission.</h2>
-        <p class="section-subheading mx-auto" style="text-align:center;">Six integrated modules that talk to each other. One unified view of your nonprofit.</p>
+        <h2 class="section-heading mx-auto" style="text-align:center;">Nonprofit management software that connects everything.</h2>
+        <p class="section-subheading mx-auto" style="text-align:center;">Six integrated modules that talk to each other — your nonprofit CRM, fundraising, events, and reporting in one place.</p>
       </div>
 
       <div class="platform__grid">
@@ -2230,7 +2308,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#E8863A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
           <div>
-            <h4 class="why-different__item-title">Built for how nonprofits actually operate</h4>
+            <h3 class="why-different__item-title">Built for how nonprofits actually operate</h3>
             <p class="why-different__item-desc">Pledges, in-kind donations, vendor coordination, mailing labels — the real stuff other platforms ignore.</p>
           </div>
         </div>
@@ -2240,7 +2318,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#E8863A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
           <div>
-            <h4 class="why-different__item-title">Natural language reporting</h4>
+            <h3 class="why-different__item-title">Natural language reporting</h3>
             <p class="why-different__item-desc">Stop building reports manually. Just ask "show me all donations over $100 this month" and Goodness generates it instantly.</p>
           </div>
         </div>
@@ -2250,7 +2328,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#E8863A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
           <div>
-            <h4 class="why-different__item-title">Everything linked together</h4>
+            <h3 class="why-different__item-title">Everything linked together</h3>
             <p class="why-different__item-desc">Donors, prospects, pledges, events, vendors, and forms — all connected. Update one thing and it flows everywhere.</p>
           </div>
         </div>
@@ -2260,7 +2338,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#E8863A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
           <div>
-            <h4 class="why-different__item-title">Flexible for every org</h4>
+            <h3 class="why-different__item-title">Flexible for every org</h3>
             <p class="why-different__item-desc">Custom fields, donor tags, fund names, thresholds, vendor categories — configure Goodness to match how your nonprofit works, not the other way around.</p>
           </div>
         </div>
@@ -2270,7 +2348,7 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="#E8863A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
           </div>
           <div>
-            <h4 class="why-different__item-title">Automations that save real hours</h4>
+            <h3 class="why-different__item-title">Automations that save real hours</h3>
             <p class="why-different__item-desc">Auto-generate in-kind letters, trigger tasks on form submissions, send acknowledgments from donor profiles, and forward emails directly into your CRM.</p>
           </div>
         </div>
@@ -2360,6 +2438,81 @@
               <div class="testimonial__name">Aisha Larson</div>
               <div class="testimonial__role">Operations Lead, Bright Futures Network</div>
             </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ========================================
+       FAQ
+       ======================================== -->
+  <section class="faq" id="faq">
+    <div class="container">
+      <div class="faq__header reveal">
+        <span class="section-label">FAQ</span>
+        <h2 class="section-heading mx-auto" style="text-align:center;">Common questions about nonprofit software.</h2>
+      </div>
+
+      <div class="faq__list">
+        <div class="faq__item reveal reveal--delay-1">
+          <button class="faq__question" aria-expanded="false">
+            What is nonprofit software and why do organizations need it?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">Nonprofit software is a category of tools designed to help charitable organizations manage donors, fundraising, events, communications, and reporting. Instead of juggling spreadsheets and disconnected apps, nonprofit software like Goodness brings everything into one platform — so your team spends less time on operations and more time on mission.</div>
+          </div>
+        </div>
+
+        <div class="faq__item reveal reveal--delay-2">
+          <button class="faq__question" aria-expanded="false">
+            How is Goodness different from other nonprofit CRMs?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">Most nonprofit CRMs focus only on donor tracking. Goodness is a full operating system — it connects your donor CRM with pledges, events, vendors, forms, communications, and AI reporting in one platform. Everything links together, so when a donor attends an event or fulfills a pledge, it's all tracked automatically without manual data entry.</div>
+          </div>
+        </div>
+
+        <div class="faq__item reveal reveal--delay-3">
+          <button class="faq__question" aria-expanded="false">
+            Can Goodness replace our current fundraising software?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">Yes. Goodness replaces your standalone fundraising software, donor CRM, event management tool, and communication platform with one unified system. Import your existing data from spreadsheets or other platforms, and Goodness handles donation tracking, pledge management, campaign attribution, acknowledgment letters, and more.</div>
+          </div>
+        </div>
+
+        <div class="faq__item reveal reveal--delay-4">
+          <button class="faq__question" aria-expanded="false">
+            Does Goodness work for small nonprofits?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">Absolutely. Our Starter plan is free forever for organizations with up to 250 contacts and includes unlimited users — no per-seat charges. Small nonprofits get access to the same donor CRM, donation forms, and basic reporting as larger organizations. As you grow, you can upgrade to access events, AI automation, and advanced fundraising tools.</div>
+          </div>
+        </div>
+
+        <div class="faq__item reveal reveal--delay-5">
+          <button class="faq__question" aria-expanded="false">
+            What's included in the free plan?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">The Starter plan includes a full donor CRM, donation forms, basic reporting, email support, and unlimited users — all at no cost. It supports up to 250 contacts, making it ideal for new nonprofits getting started with professional nonprofit management software without any financial commitment.</div>
+          </div>
+        </div>
+
+        <div class="faq__item reveal reveal--delay-5">
+          <button class="faq__question" aria-expanded="false">
+            How does AI reporting work for nonprofits?
+            <svg class="faq__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+          </button>
+          <div class="faq__answer">
+            <div class="faq__answer-inner">Instead of building reports manually, you ask questions in plain English — like "show me all donations over $100 this month" or "which pledges are at risk." Goodness generates the report instantly with AI-powered insights, year-over-year comparisons, and exportable summaries. It turns hours of reporting work into seconds.</div>
           </div>
         </div>
       </div>
@@ -2542,8 +2695,8 @@
     <div class="container">
       <div class="cta__card reveal">
         <span class="section-label">Get Started</span>
-        <h2 class="cta__heading">Run your nonprofit with clarity and confidence.</h2>
-        <p class="cta__text">Join the waitlist and be among the first nonprofit teams to experience Goodness.</p>
+        <h2 class="cta__heading">The nonprofit software your team deserves.</h2>
+        <p class="cta__text">Join the waitlist and be among the first to experience smarter nonprofit management with Goodness.</p>
         <div class="cta__actions">
           <button class="btn btn--primary btn--large demo-trigger">
             Join the Waitlist
@@ -2659,6 +2812,8 @@
   </div>
 
 
+  </main>
+
   <!-- ========================================
        FOOTER
        ======================================== -->
@@ -2667,7 +2822,7 @@
       <div class="footer__inner">
         <div class="footer__brand">
           <div class="footer__logo">
-            <svg class="footer__logo-icon" viewBox="0 0 200 200" width="32" height="32">
+            <svg class="footer__logo-icon" viewBox="0 0 200 200" width="32" height="32" role="img" aria-label="Goodness logo">
               <ellipse cx="100" cy="62" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="6" transform="rotate(-12, 100, 62)" stroke-linecap="round"/>
               <ellipse cx="100" cy="64" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="4" opacity="0.12" transform="rotate(-12, 100, 64)"/>
               <text x="100" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="115" font-weight="700" fill="#FFFFFF">g</text>
@@ -2997,6 +3152,29 @@
         }
       });
     });
+
+    // FAQ accordion
+    document.querySelectorAll('.faq__question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.closest('.faq__item');
+        const answer = item.querySelector('.faq__answer');
+        const isOpen = item.classList.contains('active');
+
+        // Close all
+        document.querySelectorAll('.faq__item.active').forEach(openItem => {
+          openItem.classList.remove('active');
+          openItem.querySelector('.faq__answer').style.maxHeight = '0';
+          openItem.querySelector('.faq__question').setAttribute('aria-expanded', 'false');
+        });
+
+        // Open clicked (if it wasn't already open)
+        if (!isOpen) {
+          item.classList.add('active');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
   </script>
 
   <!-- Structured Data -->
@@ -3059,6 +3237,62 @@
           "billingDuration": "P1M"
         },
         "description": "For growing orgs with active programs. Up to 10,000 contacts."
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is nonprofit software and why do organizations need it?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nonprofit software is a category of tools designed to help charitable organizations manage donors, fundraising, events, communications, and reporting. Instead of juggling spreadsheets and disconnected apps, nonprofit software like Goodness brings everything into one platform — so your team spends less time on operations and more time on mission."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is Goodness different from other nonprofit CRMs?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most nonprofit CRMs focus only on donor tracking. Goodness is a full operating system — it connects your donor CRM with pledges, events, vendors, forms, communications, and AI reporting in one platform. Everything links together, so when a donor attends an event or fulfills a pledge, it's all tracked automatically without manual data entry."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can Goodness replace our current fundraising software?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Goodness replaces your standalone fundraising software, donor CRM, event management tool, and communication platform with one unified system. Import your existing data from spreadsheets or other platforms, and Goodness handles donation tracking, pledge management, campaign attribution, acknowledgment letters, and more."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Does Goodness work for small nonprofits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Absolutely. Our Starter plan is free forever for organizations with up to 250 contacts and includes unlimited users — no per-seat charges. Small nonprofits get access to the same donor CRM, donation forms, and basic reporting as larger organizations. As you grow, you can upgrade to access events, AI automation, and advanced fundraising tools."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's included in the free plan?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "The Starter plan includes a full donor CRM, donation forms, basic reporting, email support, and unlimited users — all at no cost. It supports up to 250 contacts, making it ideal for new nonprofits getting started with professional nonprofit management software without any financial commitment."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does AI reporting work for nonprofits?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Instead of building reports manually, you ask questions in plain English — like 'show me all donations over $100 this month' or 'which pledges are at risk.' Goodness generates the report instantly with AI-powered insights, year-over-year comparisons, and exportable summaries. It turns hours of reporting work into seconds."
+        }
       }
     ]
   }
