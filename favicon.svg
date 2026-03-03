@@ -1,4 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="32" height="32">
-  <ellipse cx="100" cy="62" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="6" transform="rotate(-12, 100, 62)" stroke-linecap="round"/>
-  <text x="100" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="115" font-weight="700" fill="#0C2D48">g</text>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="32" height="32"><rect width="200" height="200" rx="40" fill="#E8863A"/><text x="100" y="160" text-anchor="middle" font-family="Georgia, serif" font-size="160" font-weight="700" fill="#FFFFFF">g</text></svg>
