@@ -50,6 +50,54 @@ exports.handler = async (event) => {
       return { statusCode: 500, body: JSON.stringify({ error: 'Failed to save signup' }) };
     }
 
+    // Send welcome email via Resend (non-blocking — don't fail the signup if email fails)
+    if (process.env.RESEND_API_KEY) {
+      try {
+        const firstName = data.firstName || '';
+        const greeting = firstName ? `Hi ${firstName},` : 'Hi there,';
+
+        await fetch('https://api.resend.com/emails', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            from: 'Goodness <hello@trygoodness.ai>',
+            to: [data.email],
+            subject: "You're on the Goodness waitlist!",
+            html: `
+              <div style="font-family: Georgia, serif; max-width: 520px; margin: 0 auto; color: #1a2a3a;">
+                <p style="font-size: 16px; line-height: 1.7;">${greeting}</p>
+                <p style="font-size: 16px; line-height: 1.7;">
+                  Thanks for joining the Goodness waitlist! We're building the AI operating system for nonprofits
+                  — one calm, intelligent platform for your donors, events, communications, and reporting.
+                </p>
+                <p style="font-size: 16px; line-height: 1.7;">
+                  We'll reach out as soon as your spot is ready. In the meantime, if you know someone
+                  who'd love this, share the link:
+                </p>
+                <p style="text-align: center; margin: 28px 0;">
+                  <a href="https://trygoodness.ai" style="display: inline-block; padding: 12px 28px; background: #E8863A; color: #ffffff; text-decoration: none; border-radius: 24px; font-family: Georgia, serif; font-weight: 700; font-size: 15px;">Visit trygoodness.ai</a>
+                </p>
+                <p style="font-size: 16px; line-height: 1.7;">
+                  Talk soon,<br>
+                  The Goodness Team
+                </p>
+                <hr style="border: none; border-top: 1px solid #e8e4df; margin: 32px 0 16px;">
+                <p style="font-size: 12px; color: #8a8a8a; line-height: 1.5;">
+                  You're receiving this because you signed up at trygoodness.ai.
+                  Questions? Reply to this email — it goes right to our inbox.
+                </p>
+              </div>
+            `
+          })
+        });
+      } catch (emailErr) {
+        console.error('Email send error (non-fatal):', emailErr);
+      }
+    }
+
     return {
       statusCode: 200,
       body: JSON.stringify({ success: true })
