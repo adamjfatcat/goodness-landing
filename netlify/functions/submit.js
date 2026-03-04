@@ -7,9 +7,25 @@ exports.handler = async (event) => {
   try {
     const data = JSON.parse(event.body);
 
-    // Basic validation
-    if (!data.firstName || !data.lastName || !data.email || !data.orgName) {
-      return { statusCode: 400, body: JSON.stringify({ error: 'Missing required fields' }) };
+    // Email is always required
+    if (!data.email) {
+      return { statusCode: 400, body: JSON.stringify({ error: 'Email is required' }) };
+    }
+
+    // Build Airtable fields — email-only submissions use "Footer Signup" as source
+    const fields = {
+      'Email': data.email,
+      'First Name': data.firstName || '',
+      'Last Name': data.lastName || '',
+      'Organization': data.orgName || '',
+      'Team Size': data.orgSize || '',
+      'Role': data.role || '',
+      'Message': data.message || ''
+    };
+
+    // Mark source so you can distinguish full form vs footer signups
+    if (!data.firstName && !data.orgName) {
+      fields['Message'] = 'Footer email signup';
     }
 
     const response = await fetch(
@@ -22,15 +38,7 @@ exports.handler = async (event) => {
         },
         body: JSON.stringify({
           records: [{
-            fields: {
-              'First Name': data.firstName,
-              'Last Name': data.lastName,
-              'Email': data.email,
-              'Organization': data.orgName,
-              'Team Size': data.orgSize || '',
-              'Role': data.role || '',
-              'Message': data.message || ''
-            }
+            fields
           }]
         })
       }

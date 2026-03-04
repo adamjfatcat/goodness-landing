@@ -814,34 +814,98 @@
 
     .footer__group-link:hover { color: var(--white); }
 
-    .footer__bottom {
-      padding-top: 32px;
+    .footer__signup {
+      padding: 32px 0;
       border-top: 1px solid rgba(255, 255, 255, 0.08);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      margin-bottom: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .footer__signup-text { flex-shrink: 0; }
+
+    .footer__signup-title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+
+    .footer__signup-subtitle {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+    }
+
+    .footer__signup-form {
+      display: flex;
+      gap: 8px;
+      flex: 1;
+      max-width: 420px;
+    }
+
+    .footer__signup-input {
+      flex: 1;
+      padding: 12px 16px;
+      border: 1.5px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-full);
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      outline: none;
+      transition: border-color var(--transition-fast);
+      min-width: 0;
+    }
+
+    .footer__signup-input::placeholder { color: var(--gray-500); }
+    .footer__signup-input:focus { border-color: var(--sunrise); }
+
+    .footer__signup-btn {
+      padding: 12px 24px;
+      background: var(--gradient-cta);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-size: 0.875rem;
+      font-weight: 600;
+      border: none;
+      border-radius: var(--radius-full);
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all var(--transition-base);
+      box-shadow: 0 4px 16px rgba(232, 134, 58, 0.3);
+    }
+
+    .footer__signup-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(232, 134, 58, 0.4);
+    }
+
+    .footer__signup-btn:disabled {
+      opacity: 0.7;
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    .footer__signup-success {
+      display: none;
+      color: var(--sunrise);
+      font-size: 0.9375rem;
+      font-weight: 600;
+    }
+
+    .footer__signup-success.active { display: block; }
+
+    .footer__bottom {
       display: flex;
       justify-content: space-between;
       align-items: center;
       font-size: 0.8125rem;
       color: var(--gray-500);
-    }
-
-    .footer__social { display: flex; gap: 16px; }
-
-    .footer__social a {
-      width: 36px;
-      height: 36px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--gray-500);
-      transition: all var(--transition-fast);
-      font-size: 0.875rem;
-    }
-
-    .footer__social a:hover {
-      background: rgba(255, 255, 255, 0.12);
-      color: var(--white);
     }
 
     /* ========================================
@@ -1150,6 +1214,16 @@
       .footer__links {
         flex-direction: column;
         gap: 32px;
+      }
+
+      .footer__signup {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer__signup-form {
+        max-width: 100%;
+        width: 100%;
       }
 
       .footer__bottom {
@@ -1635,6 +1709,18 @@
         </div>
       </div>
 
+      <div class="footer__signup" id="footerSignup">
+        <div class="footer__signup-text">
+          <div class="footer__signup-title">Stay in the loop</div>
+          <div class="footer__signup-subtitle">Get notified when Goodness launches.</div>
+        </div>
+        <form class="footer__signup-form" id="footerSignupForm">
+          <input type="email" class="footer__signup-input" id="footerEmail" placeholder="you@nonprofit.org" required>
+          <button type="submit" class="footer__signup-btn" id="footerSubmitBtn">Join Waitlist</button>
+        </form>
+        <div class="footer__signup-success" id="footerSuccess">You're on the list! We'll be in touch.</div>
+      </div>
+
       <div class="footer__bottom">
         <span>&copy; 2026 Goodness. All rights reserved.</span>
       </div>
@@ -1950,6 +2036,42 @@
       }
     ]
   }
+  </script>
+
+  <script>
+    // Footer email signup
+    const footerForm = document.getElementById('footerSignupForm');
+    if (footerForm) {
+      footerForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const emailInput = document.getElementById('footerEmail');
+        const submitBtn = document.getElementById('footerSubmitBtn');
+        const successMsg = document.getElementById('footerSuccess');
+        const email = emailInput.value.trim();
+
+        if (!email) return;
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Joining...';
+
+        try {
+          const response = await fetch('/.netlify/functions/submit', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email })
+          });
+
+          if (!response.ok) throw new Error('Failed');
+
+          footerForm.style.display = 'none';
+          successMsg.classList.add('active');
+        } catch (err) {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Join Waitlist';
+          alert('Something went wrong. Please try again.');
+        }
+      });
+    }
   </script>
 
 </body>
