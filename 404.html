@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3B99XL5B7M"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-3B99XL5B7M');
+  </script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Page Not Found — Goodness</title>
+
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --deep-ocean: #0C2D48;
+      --sunrise: #E8863A;
+      --midnight: #071E30;
+      --horizon: #F5F9FC;
+      --warm-white: #FFF8F0;
+      --warm-amber: #F4A261;
+      --white: #FFFFFF;
+      --gray-100: #E8EEF2;
+      --gray-200: #D0DAE0;
+      --gray-400: #8BA7B8;
+      --gray-500: #6B8A9E;
+      --gray-900: #071E30;
+      --text-primary: #0C2D48;
+      --text-secondary: #4A6E84;
+      --gradient-cta: linear-gradient(135deg, #E8863A 0%, #F4A261 100%);
+      --gradient-hero: linear-gradient(160deg, #F5F9FC 0%, #FFF8F0 30%, #F5F9FC 70%, #FFF8F0 100%);
+      --font-display: Georgia, serif;
+      --font-body: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --radius-full: 9999px;
+      --radius-md: 12px;
+      --shadow-sm: 0 1px 3px rgba(12, 45, 72, 0.06), 0 1px 2px rgba(12, 45, 72, 0.04);
+      --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+      --transition-base: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    body {
+      font-family: var(--font-body);
+      color: var(--text-primary);
+      background: var(--white);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+
+    /* ========================================
+       NAVBAR (simplified)
+       ======================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      padding: 20px 24px;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(12, 45, 72, 0.06);
+    }
+
+    .navbar__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .navbar__logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .navbar__links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .navbar__link {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      transition: color var(--transition-base);
+    }
+
+    .navbar__link:hover {
+      color: var(--sunrise);
+    }
+
+    .navbar__actions {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .navbar__login {
+      font-size: 0.9375rem;
+      color: var(--text-secondary);
+      transition: color var(--transition-base);
+    }
+
+    .navbar__login:hover {
+      color: var(--sunrise);
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 28px;
+      font-family: var(--font-display);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      border-radius: var(--radius-full);
+      transition: all var(--transition-base);
+      white-space: nowrap;
+    }
+
+    .btn--primary {
+      background: var(--gradient-cta);
+      color: var(--white);
+      box-shadow: 0 4px 16px rgba(232, 134, 58, 0.3);
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(232, 134, 58, 0.4);
+    }
+
+    .btn--secondary {
+      background: var(--white);
+      color: var(--text-primary);
+      border: 1.5px solid var(--gray-200);
+    }
+
+    .btn--secondary:hover {
+      border-color: var(--sunrise);
+      color: var(--sunrise);
+      transform: translateY(-2px);
+    }
+
+    .btn--small {
+      padding: 10px 20px;
+      font-size: 0.875rem;
+    }
+
+    /* ========================================
+       404 CONTENT
+       ======================================== */
+    .error-page {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 120px 24px 80px;
+      background: var(--gradient-hero);
+      text-align: center;
+    }
+
+    .error-page__inner {
+      max-width: 560px;
+    }
+
+    .error-page__code {
+      font-family: var(--font-display);
+      font-size: clamp(6rem, 15vw, 10rem);
+      font-weight: 700;
+      line-height: 1;
+      background: var(--gradient-cta);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+
+    .error-page__heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .error-page__text {
+      font-size: 1.125rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+      margin-bottom: 32px;
+    }
+
+    .error-page__actions {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ========================================
+       FOOTER
+       ======================================== */
+    .footer {
+      background: var(--gray-900);
+      color: var(--white);
+      padding: 40px 24px;
+    }
+
+    .footer__inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer__brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .footer__copy {
+      font-size: 0.875rem;
+      color: var(--gray-500);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer__link {
+      font-size: 0.875rem;
+      color: var(--gray-400);
+      transition: color var(--transition-base);
+    }
+
+    .footer__link:hover {
+      color: var(--white);
+    }
+
+    /* ========================================
+       MOBILE NAV
+       ======================================== */
+    .navbar__toggle {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: 4px;
+    }
+
+    .navbar__toggle span {
+      width: 22px;
+      height: 2px;
+      background: var(--text-primary);
+      border-radius: 2px;
+      transition: all var(--transition-base);
+    }
+
+    .navbar__mobile {
+      display: none;
+      padding: 16px 24px 24px;
+    }
+
+    .navbar__mobile-links {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .navbar__mobile-link {
+      display: block;
+      padding: 12px 0;
+      font-size: 1.0625rem;
+      color: var(--text-secondary);
+      border-bottom: 1px solid var(--gray-100);
+    }
+
+    .navbar__mobile-actions {
+      padding-top: 16px;
+    }
+
+    @media (max-width: 768px) {
+      .navbar__links,
+      .navbar__actions {
+        display: none;
+      }
+
+      .navbar__toggle {
+        display: flex;
+      }
+
+      .navbar__mobile.active {
+        display: block;
+      }
+
+      .navbar__toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .navbar__toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+      .navbar__toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar__inner">
+      <a href="/" class="navbar__logo">
+        <svg viewBox="0 0 200 200" width="36" height="36" role="img" aria-label="Goodness logo">
+          <ellipse cx="100" cy="62" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="6" transform="rotate(-12, 100, 62)" stroke-linecap="round"/>
+          <ellipse cx="100" cy="64" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="4" opacity="0.12" transform="rotate(-12, 100, 64)"/>
+          <text x="100" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="115" font-weight="700" fill="#0C2D48">g</text>
+        </svg>
+        goodness
+      </a>
+
+      <ul class="navbar__links">
+        <li><a href="/features" class="navbar__link">Features</a></li>
+        <li><a href="/#how-it-works" class="navbar__link">How It Works</a></li>
+        <li><a href="/#impact" class="navbar__link">Impact</a></li>
+        <li><a href="/pricing" class="navbar__link">Pricing</a></li>
+        <li><a href="/#faq" class="navbar__link">FAQ</a></li>
+      </ul>
+
+      <div class="navbar__actions">
+        <a href="#" class="navbar__login">Login</a>
+        <a href="/" class="btn btn--primary btn--small">Join the Waitlist</a>
+      </div>
+
+      <button class="navbar__toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <div class="navbar__mobile" id="mobileMenu">
+      <div class="navbar__mobile-links">
+        <a href="/features" class="navbar__mobile-link">Features</a>
+        <a href="/#how-it-works" class="navbar__mobile-link">How It Works</a>
+        <a href="/#impact" class="navbar__mobile-link">Impact</a>
+        <a href="/pricing" class="navbar__mobile-link">Pricing</a>
+        <a href="/#faq" class="navbar__mobile-link">FAQ</a>
+        <a href="#" class="navbar__mobile-link">Login</a>
+      </div>
+      <div class="navbar__mobile-actions">
+        <a href="/" class="btn btn--primary" style="width:100%;text-align:center;">Join the Waitlist</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="error-page">
+    <div class="error-page__inner">
+      <div class="error-page__code">404</div>
+      <h1 class="error-page__heading">This page doesn't exist</h1>
+      <p class="error-page__text">The page you're looking for may have been moved or no longer exists. Let's get you back on track.</p>
+      <div class="error-page__actions">
+        <a href="/" class="btn btn--primary">Back to Homepage</a>
+        <a href="/features" class="btn btn--secondary">View Features</a>
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer__inner">
+      <div class="footer__brand">
+        <svg viewBox="0 0 200 200" width="28" height="28" role="img" aria-label="Goodness logo">
+          <ellipse cx="100" cy="62" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="6" transform="rotate(-12, 100, 62)" stroke-linecap="round"/>
+          <ellipse cx="100" cy="64" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="4" opacity="0.12" transform="rotate(-12, 100, 64)"/>
+          <text x="100" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="115" font-weight="700" fill="#FFFFFF">g</text>
+        </svg>
+        goodness
+      </div>
+      <span class="footer__copy">&copy; 2026 Goodness. All rights reserved.</span>
+      <div class="footer__links">
+        <a href="/features" class="footer__link">Features</a>
+        <a href="/pricing" class="footer__link">Pricing</a>
+        <a href="/" class="footer__link">Home</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const navToggle = document.getElementById('navToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      mobileMenu.classList.toggle('active');
+    });
+  </script>
+</body>
+</html>
