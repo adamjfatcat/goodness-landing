@@ -620,7 +620,7 @@
     @media (max-width: 640px) {
       .pricing__grid {
         grid-template-columns: 1fr;
-        max-width: 400px;
+        max-width: 100%;
         margin: 0 auto;
       }
     }
@@ -1241,9 +1241,20 @@
     }
 
     @media (max-width: 480px) {
+      :root { --section-padding: 48px; }
       .hero__title { font-size: 2.25rem; }
       .cta__actions { flex-direction: column; width: 100%; }
       .cta__actions .btn { width: 100%; }
+      .btn { min-height: 44px; }
+      .btn--small { min-height: 44px; padding: 12px 20px; }
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 14px 16px;
+        min-height: 44px;
+      }
+      .footer__signup-input { min-height: 44px; }
+      .footer__signup-btn { min-height: 44px; }
     }
   </style>
 </head>
