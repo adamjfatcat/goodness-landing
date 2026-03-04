@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta name="theme-color" content="#0B1B2B">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="preconnect" href="https://www.googletagmanager.com">
+  <link rel="preconnect" href="https://www.google-analytics.com">
+
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-3B99XL5B7M"></script>
   <script>
@@ -864,6 +869,7 @@
 
     .footer__signup-input::placeholder { color: var(--gray-500); }
     .footer__signup-input:focus { border-color: var(--sunrise); }
+    .footer__signup-input.error { border-color: #e74c3c; }
 
     .footer__signup-btn {
       padding: 12px 24px;
@@ -928,6 +934,17 @@
       background: rgba(45, 138, 78, 0.1);
       color: #2d8a4e;
       border-color: rgba(45, 138, 78, 0.3);
+    }
+
+    .footer__signup-error {
+      display: none;
+      color: #e74c3c;
+      font-size: 0.8125rem;
+      margin-top: 8px;
+    }
+
+    .footer__signup-error.active {
+      display: block;
     }
 
     .footer__bottom {
@@ -1835,6 +1852,7 @@
             Share with a colleague
           </button>
         </div>
+        <div class="footer__signup-error" id="footerError">Please enter a valid email address.</div>
       </div>
 
       <div class="footer__bottom">
@@ -2158,14 +2176,29 @@
     // Footer email signup
     const footerForm = document.getElementById('footerSignupForm');
     if (footerForm) {
+      const emailInput = document.getElementById('footerEmail');
+      const footerError = document.getElementById('footerError');
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+      // Clear error on input
+      emailInput.addEventListener('input', () => {
+        if (emailInput.classList.contains('error')) {
+          emailInput.classList.remove('error');
+          footerError.classList.remove('active');
+        }
+      });
+
       footerForm.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const emailInput = document.getElementById('footerEmail');
         const submitBtn = document.getElementById('footerSubmitBtn');
         const successMsg = document.getElementById('footerSuccess');
         const email = emailInput.value.trim();
 
-        if (!email) return;
+        if (!email || !emailRegex.test(email)) {
+          emailInput.classList.add('error');
+          footerError.classList.add('active');
+          return;
+        }
 
         submitBtn.disabled = true;
         submitBtn.textContent = 'Joining...';

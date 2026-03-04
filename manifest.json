@@ -1,0 +1,21 @@
+{
+  "name": "Goodness",
+  "short_name": "Goodness",
+  "description": "The AI operating system for nonprofits",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#FDFBF7",
+  "theme_color": "#0B1B2B",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
