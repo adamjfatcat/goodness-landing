@@ -1295,13 +1295,41 @@
 
     .footer__signup-success {
       display: none;
+      align-items: center;
+      gap: 16px;
       color: var(--sunrise);
       font-size: 0.9375rem;
       font-weight: 600;
     }
 
     .footer__signup-success.active {
-      display: block;
+      display: flex;
+    }
+
+    .footer__share-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: rgba(232, 134, 58, 0.1);
+      color: var(--sunrise);
+      border: 1px solid rgba(232, 134, 58, 0.3);
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .footer__share-btn:hover {
+      background: rgba(232, 134, 58, 0.18);
+    }
+
+    .footer__share-btn.copied {
+      background: rgba(45, 138, 78, 0.1);
+      color: #2d8a4e;
+      border-color: rgba(45, 138, 78, 0.3);
     }
 
     .footer__signup-error {
@@ -1569,7 +1597,66 @@
       color: var(--text-secondary);
       line-height: 1.6;
       max-width: 360px;
+      margin: 0 auto 24px;
+    }
+
+    .modal__share {
       margin: 0 auto 28px;
+      padding: 20px 24px;
+      background: rgba(232, 134, 58, 0.06);
+      border-radius: 12px;
+      max-width: 360px;
+    }
+
+    .modal__share-label {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      margin-bottom: 12px;
+    }
+
+    .modal__share-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--warm-white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 4px 4px 4px 14px;
+    }
+
+    .modal__share-url {
+      flex: 1;
+      font-size: 0.8125rem;
+      color: var(--text-secondary);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      min-width: 0;
+    }
+
+    .modal__share-copy {
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--sunrise);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 0.8125rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .modal__share-copy:hover {
+      background: #d4762e;
+    }
+
+    .modal__share-copy.copied {
+      background: #2d8a4e;
     }
 
     /* Spinner */
@@ -2933,6 +3020,16 @@
         </div>
         <h3 class="modal__success-title">You're on the waitlist!</h3>
         <p class="modal__success-text">Thanks for your interest in Goodness. We'll reach out as soon as your spot is ready.</p>
+        <div class="modal__share">
+          <p class="modal__share-label">Know someone who'd love this?</p>
+          <div class="modal__share-row">
+            <span class="modal__share-url">trygoodness.ai</span>
+            <button class="modal__share-copy" id="modalCopyBtn">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>
+              Copy link
+            </button>
+          </div>
+        </div>
         <button class="btn btn--secondary" id="successClose">Close</button>
       </div>
     </div>
@@ -2987,7 +3084,13 @@
           <input type="email" class="footer__signup-input" id="footerEmail" placeholder="you@nonprofit.org" required>
           <button type="submit" class="footer__signup-btn" id="footerSubmitBtn">Join Waitlist</button>
         </form>
-        <div class="footer__signup-success" id="footerSuccess">You're on the list! We'll be in touch.</div>
+        <div class="footer__signup-success" id="footerSuccess">
+          <span>You're on the list!</span>
+          <button class="footer__share-btn" id="footerCopyBtn">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"></path></svg>
+            Share with a colleague
+          </button>
+        </div>
       </div>
 
       <div class="footer__bottom">
@@ -3448,6 +3551,29 @@
           alert('Something went wrong. Please try again.');
         }
       });
+    }
+
+    // Copy-to-clipboard for share buttons
+    function handleCopyClick(btn, text) {
+      navigator.clipboard.writeText(text).then(() => {
+        const original = btn.innerHTML;
+        btn.classList.add('copied');
+        btn.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg> Copied!';
+        setTimeout(() => {
+          btn.classList.remove('copied');
+          btn.innerHTML = original;
+        }, 2500);
+      });
+    }
+
+    const modalCopyBtn = document.getElementById('modalCopyBtn');
+    if (modalCopyBtn) {
+      modalCopyBtn.addEventListener('click', () => handleCopyClick(modalCopyBtn, 'https://trygoodness.ai'));
+    }
+
+    const footerCopyBtn = document.getElementById('footerCopyBtn');
+    if (footerCopyBtn) {
+      footerCopyBtn.addEventListener('click', () => handleCopyClick(footerCopyBtn, 'https://trygoodness.ai'));
     }
   </script>
 
