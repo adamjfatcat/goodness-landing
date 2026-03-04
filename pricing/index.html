@@ -271,7 +271,6 @@
     .navbar__logo {
       display: flex;
       align-items: center;
-      gap: 10px;
       font-family: Georgia, serif;
       font-size: 1.375rem;
       font-weight: 700;
@@ -279,7 +278,19 @@
       letter-spacing: 0.01em;
     }
 
-    .navbar__logo-icon { width: 36px; height: 36px; flex-shrink: 0; }
+    .logo-g {
+      position: relative;
+      display: inline-block;
+    }
+
+    .logo-halo {
+      position: absolute;
+      top: -0.55em;
+      left: -0.05em;
+      width: 0.9em;
+      height: auto;
+      pointer-events: none;
+    }
 
     .navbar__links {
       display: flex;
@@ -778,15 +789,12 @@
     .footer__logo {
       display: flex;
       align-items: center;
-      gap: 10px;
       font-family: Georgia, serif;
       font-size: 1.25rem;
       font-weight: 700;
       color: var(--white);
       margin-bottom: 16px;
     }
-
-    .footer__logo-icon { width: 32px; height: 32px; flex-shrink: 0; }
 
     .footer__tagline {
       font-size: 0.9375rem;
@@ -1371,13 +1379,8 @@
        ======================================== -->
   <nav class="navbar" id="navbar">
     <div class="navbar__inner">
-      <a href="/" class="navbar__logo">
-        <svg class="navbar__logo-icon" viewBox="0 0 200 200" width="36" height="36" role="img" aria-label="Goodness logo">
-          <ellipse cx="100" cy="62" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="6" transform="rotate(-12, 100, 62)" stroke-linecap="round"/>
-          <ellipse cx="100" cy="64" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="4" opacity="0.12" transform="rotate(-12, 100, 64)"/>
-          <text x="100" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="115" font-weight="700" fill="#0C2D48">g</text>
-        </svg>
-        goodness
+      <a href="/" class="navbar__logo" aria-label="Goodness home">
+        <span class="logo-g">g<svg class="logo-halo" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="16" rx="38" ry="11" stroke="#E8863A" stroke-width="6" transform="rotate(-12 50 16)" stroke-linecap="round"/></svg></span>oodness
       </a>
 
       <ul class="navbar__links">
@@ -1807,12 +1810,7 @@
       <div class="footer__inner">
         <div class="footer__brand">
           <div class="footer__logo">
-            <svg class="footer__logo-icon" viewBox="0 0 200 200" width="32" height="32" role="img" aria-label="Goodness logo">
-              <ellipse cx="100" cy="62" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="6" transform="rotate(-12, 100, 62)" stroke-linecap="round"/>
-              <ellipse cx="100" cy="64" rx="38" ry="12" fill="none" stroke="#E8863A" stroke-width="4" opacity="0.12" transform="rotate(-12, 100, 64)"/>
-              <text x="100" y="148" text-anchor="middle" font-family="Georgia, serif" font-size="115" font-weight="700" fill="#FFFFFF">g</text>
-            </svg>
-            goodness
+            <span class="logo-g">g<svg class="logo-halo" viewBox="0 0 100 32" fill="none" xmlns="http://www.w3.org/2000/svg"><ellipse cx="50" cy="16" rx="38" ry="11" stroke="#E8863A" stroke-width="6" transform="rotate(-12 50 16)" stroke-linecap="round"/></svg></span>oodness
           </div>
           <p class="footer__tagline">The AI operating system for nonprofits. Run better. Grow impact. Do more good.</p>
         </div>
